@@ -20,9 +20,9 @@ class EmployeeSerializer(serializers.ModelSerializer):
     status = StatusSerializer(read_only=True)
     status_id = serializers.PrimaryKeyRelatedField(queryset=Status.objects.all(), source='status', write_only=True)
     position = PositionSerializer(read_only=True)
-    position_id = serializers.PrimaryKeyRelatedField(queryset=Position.objects.all(), source='position', write_only=True)
+    position_id = serializers.PrimaryKeyRelatedField(queryset=Position.objects.all(), source='position', allow_null=True, write_only=True)
     department = DepartmentSerializer(read_only=True)
-    department_id = serializers.PrimaryKeyRelatedField(queryset=Department.objects.all(), source='department', write_only=True)
+    department_id = serializers.PrimaryKeyRelatedField(queryset=Department.objects.all(), source='department', allow_null=True, write_only=True)
 
     class Meta:
         model = Employee

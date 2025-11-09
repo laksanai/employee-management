@@ -7,7 +7,7 @@ from .serializers import EmployeeSerializer, PositionSerializer, DepartmentSeria
 class EmployeeViewSet(viewsets.ModelViewSet):
     queryset = Employee.objects.select_related('status','position','department').all()
     serializer_class = EmployeeSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [permissions.IsAuthenticated]
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     filterset_fields = ['position', 'department', 'status']
     search_fields = ['name', 'address', 'position__name', 'department__name']
@@ -15,7 +15,7 @@ class EmployeeViewSet(viewsets.ModelViewSet):
 class PositionViewSet(viewsets.ModelViewSet):
     queryset = Position.objects.all()
     serializer_class = PositionSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [permissions.IsAuthenticated]
 
 class DepartmentViewSet(viewsets.ModelViewSet):
     queryset = Department.objects.all()
