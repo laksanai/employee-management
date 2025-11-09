@@ -19,7 +19,7 @@ class EmployeeAPITest(APITestCase):
     def setUp(self):
         # 1. สร้างผู้ใช้และรับ Token สำหรับการทดสอบ (Authentication)
         self.user = User.objects.create_user(username='apitest', password='testpassword')
-        response = self.client.post('/api/auth/token/', {'username': 'apitest', 'password': 'testpassword'}, format='json')
+        response = self.client.post('/auth/login/', {'username': 'apitest', 'password': 'testpassword'}, format='json')
         self.token = response.data['token']
         self.client.credentials(HTTP_AUTHORIZATION='Token ' + self.token) # ตั้งค่า Header สำหรับทุกคำขอ
         
