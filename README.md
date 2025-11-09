@@ -10,7 +10,7 @@ pip install -r requirements.txt
 
 ## การตั้งค่าฐานข้อมูล
 ```bash
-python manage.py makemigrations emp_app register
+python manage.py makemigrations
 python manage.py migrate
 ```
 
@@ -20,7 +20,7 @@ python manage.py runserver
 ```
 
 ## ทำการเพิ่ม User
-ไปที่ http://127.0.0.1:8000/register/ เพื่อทำการเพิ่ม user
+ไปที่ http://127.0.0.1:8000/auth/register/ เพื่อทำการเพิ่ม user
 
 ## ให้ทำการเพิ่มข้อมูลใน Model
 - position     ที่  http://127.0.0.1:8000/api/positions/
