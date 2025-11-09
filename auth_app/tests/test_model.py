@@ -5,7 +5,7 @@ from auth_app.serializers import RegisterSerializer
 User = get_user_model()
 
 # --- Unit Test สำหรับ Serializer ---
-class RegisterSerializerTest(APITestCase):
+class AuthenModelTest(APITestCase):
     """
     ทดสอบการทำงานของ RegisterSerializer
     """
