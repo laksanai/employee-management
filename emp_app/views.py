@@ -10,7 +10,7 @@ class EmployeeViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     filterset_fields = ['position', 'department', 'status']
-    search_fields = ['name', 'address', 'position__name', 'department__name']
+    search_fields = ['position__name', 'department__name', 'status__name']
 
 class PositionViewSet(viewsets.ModelViewSet):
     queryset = Position.objects.all()
