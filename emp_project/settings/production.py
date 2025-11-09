@@ -1,18 +1,19 @@
 from .base import *
+import os
 
 DEBUG = False 
 ALLOWED_HOSTS = ['your-domain.com', 'your-ip-address'] 
 
-# SECRET_KEY ต้องถูกดึงมาจาก Environment Variable เพื่อความปลอดภัย
-# SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY') # ต้องมี os.environ.get() และการจัดการ Error
-SECRET_KEY = 'MySecretKeys'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
-# ฐานข้อมูล (มักใช้ PostgreSQL หรือ MySQL)
 DATABASES = {
     'default': {
-        # ... ตั้งค่า Engine และ Credentials สำหรับ Production Database
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT', 5432),
     }
 }
-# การตั้งค่าสำหรับ Static/Media files
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static_root') 
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
+
